@@ -1,0 +1,31 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+.head{
+    display: flex;
+    justify-content: space-between;
+    background-color: bisque;
+    align-items: center;
+}
+
+.btn{
+    width: 80px;
+    height: 50px;
+    background-color: royalblue;
+    outline: none;
+    border: none;
+    margin: 10px 2px;
+    border-radius: 10px;
+    
+}
+
+.head input{
+    height: 50px;
+    margin: 10px 2px;
+    background-color: rgb(210, 204, 204);
+    color: black;
+    border-radius: 10px;
+
+}

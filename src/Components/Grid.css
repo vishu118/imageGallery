@@ -1,0 +1,10 @@
+.inner-container{
+    /* background-color: rgb(207, 202, 202); */
+    display: flex;
+    justify-content: center;
+  
+}
+
+.images{
+padding: 20px;
+}
