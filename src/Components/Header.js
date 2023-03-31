@@ -23,11 +23,7 @@ const Header = ({ handleSort }) => {
         <input
           type="text"
           placeholder="Search For Image......"
-          onChange={handleChange}
         />
-        <button className="btn" >
-          Search
-        </button>
       </div>
       <div>
         <button className="btn" onClick={handleChange}>
