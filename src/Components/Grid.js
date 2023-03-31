@@ -1,20 +1,16 @@
-import React from "react";
+import React, { useState } from "react";
 import Header from "./Header";
 import "./Grid.css";
+import Dummy from "./Data.json"
 
 const Grid = () => {
-  const imageArr = [
-    { name: "laptop", url: "https://picsum.photos/id/2/200/" },
-    { name: "View", url: "https://picsum.photos/id/10/200/" },
-    { name: "random", url: "https://picsum.photos/id/23/200/" },
-    { name: "Cars", url: "https://picsum.photos/id/25/200/" },
-    { name: "Bike", url: "https://picsum.photos/id/29/200/" },
-  ];
+    const [Data,setData] = useState(Dummy)
 
   const handleSort = () => {
     console.log("clicked");
 
-    imageArr.sort((a, b) => (a.name > b.name ? 1 : -1));
+    Dummy.sort((a, b) => (a.name > b.name ? 1 : -1));
+    console.log(Dummy)
   };
 
   return (
@@ -23,9 +19,9 @@ const Grid = () => {
         <Header handleSort={handleSort} />
 
         <div className="inner-container" id="inner-container">
-          {imageArr.map((ele, index) => {
+          {Data.map((ele) => {
             return (
-              <div className="images" key={index}>
+              <div className="images" key = {Data.id}>
                 <img src={ele.url} alt="notFound" />
                 <h2>{ele.name}</h2>
               </div>
@@ -38,3 +34,5 @@ const Grid = () => {
 };
 
 export default Grid;
+
+
