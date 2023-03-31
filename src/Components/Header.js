@@ -1,22 +1,33 @@
 import React, { useState } from "react";
 import "./Header.css";
 
+const Header = ({ Data, setData,Dummy }) => {
+  const [Sorted, setSorted] = useState({ sorted: "name", reversed: false });
+  const [Search, setSearch] = useState("");
 
+  const sortedByName = () => {
+    setSorted({ sorted: "name", reversed: !Sorted.reversed });
+    const DataCopy = [...Data];
+    DataCopy.sort((a, b) => {
+      if (Sorted.reversed) {
+        return a.name.localeCompare(b.name);
+      }
+      return b.name.localeCompare(a.name);
+    });
+    setData(DataCopy);
+  };
 
-const Header = ({Data,setData}) => {
-  const[Sorted,setSorted] = useState({sorted : 'name', reversed : false})
-
-const sortedByName = ()=>{
-setSorted({sorted:"name", reversed : !Sorted.reversed})
-const DataCopy = [...Data];
-DataCopy.sort((a,b)=>{
- if(Sorted.reversed){
-  return a.name.localeCompare(b.name)
- }
- return b.name.localeCompare(a.name)
-})
-setData(DataCopy)
-}
+  const handleSearch = (e) => {
+  
+    const matchedData = Data.filter((ele) => {
+      
+      return (
+        ele.name.toLowerCase().includes(e.target.value.toLowerCase())
+      )
+    });
+    setData(matchedData);
+    setSearch(e.target.value);
+  };
   const handleChange = (e) => {
     let container = document.getElementById("inner-container");
 
@@ -27,23 +38,25 @@ setData(DataCopy)
     }
   };
 
- 
-
   return (
     <div className="head">
       <div className="title">
         <h1>Image Gallery</h1>
         <div className="searchField">
-          <input type="text" placeholder="Search For Image......" />
+          <input
+            type="text"
+            placeholder="Search For Image......"
+            value={Search}
+            onChange={handleSearch}
+          />
         </div>
         <div>
-          <button className="btn" onClick={handleChange}>
+          <button className="btn"
+           onClick={handleChange}
+           >
             Change
           </button>
-          <button
-            className="btn"
-            onClick = {sortedByName}
-          >
+          <button className="btn" onClick={sortedByName}>
             Sort
           </button>
         </div>

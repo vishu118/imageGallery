@@ -12,7 +12,7 @@ const Mainpage = () => {
 
   return (
     <UserContext.Provider value = {Data}>
-        <Header Data = {Data} setData = {setData}/>
+        <Header Data = {Data} setData = {setData} Dummy = {Dummy}/>
         <Grid  Data={Data}/> 
     </UserContext.Provider>
   )
