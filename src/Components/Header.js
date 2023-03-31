@@ -20,10 +20,12 @@ const Header = ({ Data, setData,Dummy }) => {
   const handleSearch = (e) => {
   
     const matchedData = Data.filter((ele) => {
+      if(Search == ""){
+        return ele
+      }else if(ele.name.toLowerCase().includes(e.target.value.toLowerCase())){
+        return ele
+      }
       
-      return (
-        ele.name.toLowerCase().includes(e.target.value.toLowerCase())
-      )
     });
     setData(matchedData);
     setSearch(e.target.value);
