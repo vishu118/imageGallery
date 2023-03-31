@@ -4,10 +4,16 @@
     box-sizing: border-box;
 }
 .head{
-    display: flex;
-    justify-content: space-between;
     background-color: bisque;
     align-items: center;
+   
+}
+
+.title{
+    margin: 0 1.9em;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .btn{
@@ -24,8 +30,26 @@
 .head input{
     height: 50px;
     margin: 10px 2px;
-    background-color: rgb(210, 204, 204);
+    background-color: rgb(171, 165, 165);
     color: black;
     border-radius: 10px;
+    border: none;
+    /* text-align: center; */
+    padding: 0 2em;
+    font-size: 0.9em;
+    color: aliceblue;
+    
+
+
 
 }
+
+input:focus{
+    outline: none;
+    color: white;
+}
+
+input::placeholder{
+    color: aliceblue;
+}
+

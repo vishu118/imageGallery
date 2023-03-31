@@ -5,6 +5,7 @@ import Dummy from "./Data.json"
 
 const Grid = () => {
     const [Data,setData] = useState(Dummy)
+  
 
   const handleSort = () => {
     console.log("clicked");
@@ -16,14 +17,16 @@ const Grid = () => {
   return (
     <>
       <div className="Container">
-        <Header handleSort={handleSort} />
+        <Header handleSort={handleSort} Data = {Data} />
 
         <div className="inner-container" id="inner-container">
           {Data.map((ele) => {
             return (
+              <div className="wrapper">
               <div className="images" key = {Data.id}>
                 <img src={ele.url} alt="notFound" />
-                <h2>{ele.name}</h2>
+                <h2 className="img-title">{ele.name}</h2>
+              </div>
               </div>
             );
           })}
