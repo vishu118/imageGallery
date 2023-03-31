@@ -1,11 +1,22 @@
-import React from "react";
+import React, { useState } from "react";
 import "./Header.css";
-import { useState } from "react";
 
-const Header = ({ handleSort,Data }) => {
-  // const [input, setinput] = useState(true);
-  const [order,setorder] = useState('ASC')
 
+
+const Header = ({Data,setData}) => {
+  const[Sorted,setSorted] = useState({sorted : 'name', reversed : false})
+
+const sortedByName = ()=>{
+setSorted({sorted:"name", reversed : !Sorted.reversed})
+const DataCopy = [...Data];
+DataCopy.sort((a,b)=>{
+ if(Sorted.reversed){
+  return a.name.localeCompare(b.name)
+ }
+ return b.name.localeCompare(a.name)
+})
+setData(DataCopy)
+}
   const handleChange = (e) => {
     let container = document.getElementById("inner-container");
 
@@ -16,45 +27,27 @@ const Header = ({ handleSort,Data }) => {
     }
   };
 
-
-  const sorting = (col)=>{
-    if(order === "ASC"){
-        const sorted = [...Data].sort((a,b)=>
-        a[col].toLowerCase()>b[col].toLowerCase()?1:-1
-        )
-        setorder(sorted)
-        setorder('DEC')
-    }
-    if(order === "DSC"){
-        const sorted = [...Data].sort((a,b)=>
-        a[col].toLowerCase()<b[col].toLowerCase()?1:-1
-        )
-        setorder(sorted)
-        setorder('ASC')
-    }
-}
-
  
+
   return (
     <div className="head">
-    <div className="title">
-
-      <h1>Image Gallery</h1>
-      <div className="searchField">
-        <input
-          type="text"
-          placeholder="Search For Image......"
-        />
+      <div className="title">
+        <h1>Image Gallery</h1>
+        <div className="searchField">
+          <input type="text" placeholder="Search For Image......" />
+        </div>
+        <div>
+          <button className="btn" onClick={handleChange}>
+            Change
+          </button>
+          <button
+            className="btn"
+            onClick = {sortedByName}
+          >
+            Sort
+          </button>
+        </div>
       </div>
-      <div>
-        <button className="btn" onClick={handleChange}>
-          Change
-        </button>
-        <button className="btn" onClick={()=>sorting('name')}>
-          Sort
-        </button>
-      </div>
-    </div>
     </div>
   );
 };

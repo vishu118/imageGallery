@@ -1,11 +1,12 @@
-
-import './App.css';
-import Grid from "./Components/Grid"
+import "./App.css";
+import Mainpage from "./Components/Mainpage";
 
 function App() {
+
+
   return (
     <div className="App">
-   <Grid/>
+      <Mainpage />
     </div>
   );
 }
