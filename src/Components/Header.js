@@ -1,9 +1,18 @@
 import React, { useState } from "react";
 import "./Header.css";
 
-const Header = ({ Data, setData,Dummy }) => {
+const Header = ({
+  Data,
+  setData,
+  Dummy,
+  Search,
+  setSearch,
+  text,
+  view,
+  setview,
+  settext,
+}) => {
   const [Sorted, setSorted] = useState({ sorted: "name", reversed: false });
-  const [Search, setSearch] = useState("");
 
   const sortedByName = () => {
     setSorted({ sorted: "name", reversed: !Sorted.reversed });
@@ -17,46 +26,26 @@ const Header = ({ Data, setData,Dummy }) => {
     setData(DataCopy);
   };
 
-  const handleSearch = (e) => {
-  
-    const matchedData = Data.filter((ele) => {
-      if(Search == ""){
-        return ele
-      }else if(ele.name.toLowerCase().includes(e.target.value.toLowerCase())){
-        return ele
-      }
-      
-    });
-    setData(matchedData);
-    setSearch(e.target.value);
-  };
-  const handleChange = (e) => {
-    let container = document.getElementById("inner-container");
-
-    if (container.style.display !== "flex") {
-      container.style.display = "flex";
-    } else {
-      container.style.display = "block";
-    }
+  const handleChange = () => {
+    setview(!view);
+    settext(!text);
   };
 
   return (
-    <div className="head">
-      <div className="title">
+    <div className="header">
+      <div className="head">
         <h1>Image Gallery</h1>
         <div className="searchField">
           <input
             type="text"
             placeholder="Search For Image......"
             value={Search}
-            onChange={handleSearch}
+            onChange={(e) => setSearch(e.target.value)}
           />
         </div>
         <div>
-          <button className="btn"
-           onClick={handleChange}
-           >
-            Change
+          <button className="btn" onClick={handleChange}>
+            {text ? "Grid" : "List"}
           </button>
           <button className="btn" onClick={sortedByName}>
             Sort
